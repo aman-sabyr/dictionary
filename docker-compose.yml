@@ -6,6 +6,21 @@
        - "8000:8000"
      volumes:
        - ./service:/service
+     environment:
+       - DB_HOST=database
+       - DB_NAME=dictionary_db
+       - DB_USER=aman
+       - DB_PASS=newpass1
 
      command: >
        sh -c "python manage.py runserver 0.0.0.0:8000"
+
+     depends_on:
+       - database
+
+   database:
+     image: postgres:14.6-alpine
+     environment:
+       - POSTGRES_DB=dictionary_db
+       - POSTGRES_USER=aman
+       - POSTGRES_PASSWORD=newpass1
