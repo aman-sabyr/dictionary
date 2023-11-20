@@ -2,6 +2,8 @@
    web-app:
      build:
        context: .
+     image: mywebapp_image
+     container_name: mywebapp_container
      ports:
        - "8000:8000"
      volumes:
